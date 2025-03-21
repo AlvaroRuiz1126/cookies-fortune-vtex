@@ -1,0 +1,6 @@
+{
+  "admin.app.cookies-forune": {
+    "component": "AdminCookiesFortuneModule",
+    "path": "/admin/app/cookies-fortune"
+  }
+}
