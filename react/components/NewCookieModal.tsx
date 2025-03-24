@@ -1,29 +1,59 @@
 import React, { useState } from "react";
-import { Button, Input, Modal } from "vtex.styleguide";
+import { Button, Input, Modal, Tag } from "vtex.styleguide";
 import { createDocument } from "../service";
 
 interface Props {
   openModal: boolean;
   handleModal: (open: boolean) => void;
+  showAlertMessage: (
+    text: string,
+    type: "success" | "error" | "warning"
+  ) => void;
 }
 
-export const NewCookieModal = ({ openModal, handleModal }: Props) => {
+export const NewCookieModal = ({
+  openModal,
+  handleModal,
+  showAlertMessage,
+}: Props) => {
   const [cookieText, setCookieText] = useState("");
+  const [error, setError] = useState(false);
 
   const handleCreate = async () => {
-    if (!cookieText.trim().length) return;
+    if (!cookieText.trim().length) {
+      setError(true);
 
-    await createDocument({ CookieFortune: cookieText });
+      return;
+    }
+
+    const createResponse = await createDocument({ CookieFortune: cookieText });
+
+    if (createResponse.DocumentId) {
+      showAlertMessage("Cookie created successfully", "success");
+    }
+
+    setError(false);
+    setCookieText("");
+    handleModal(false);
   };
 
   return (
     <Modal
       isOpen={openModal}
-      onClose={() => handleModal(false)}
+      onClose={() => {
+        setError(false);
+        handleModal(false);
+      }}
       bottomBar={
         <div className="nowrap">
           <span className="mr4">
-            <Button variation="tertiary" onClick={() => handleModal(false)}>
+            <Button
+              variation="tertiary"
+              onClick={() => {
+                setError(false);
+                handleModal(false);
+              }}
+            >
               Cancel
             </Button>
           </span>
@@ -32,7 +62,6 @@ export const NewCookieModal = ({ openModal, handleModal }: Props) => {
               variation="primary"
               onClick={() => {
                 handleCreate();
-                handleModal(false);
               }}
             >
               Create
@@ -51,8 +80,17 @@ export const NewCookieModal = ({ openModal, handleModal }: Props) => {
             placeholder="New Cookie Text"
             size="large"
             value={cookieText}
-            onChange={(e: any) => setCookieText(e.target.value)}
+            onChange={(e: any) => {
+              if (e.target.value.trim().length) setError(false);
+
+              setCookieText(e.target.value);
+            }}
           />
+          {error && (
+            <span className="mt4">
+              <Tag type="error">Fill cookie text field</Tag>
+            </span>
+          )}
         </div>
       </div>
     </Modal>

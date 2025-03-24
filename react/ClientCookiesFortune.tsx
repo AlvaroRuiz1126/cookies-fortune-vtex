@@ -37,7 +37,7 @@ function ClientCookieForutne() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex items-end">
+        <div className="flex items-end justify-between w-100">
           {cookie.trim().length > 0 && (
             <h3 className="mv2">
               <Tag bgColor="#134CD8" color="#FFFFFF" size="large">

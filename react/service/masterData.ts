@@ -6,37 +6,47 @@ const customFetch = async (path: string, config?: RequestInit) => {
       "X-VTEX-API-AppToken":
         "RWHZZGDCSOHIIHQFRBTJPHQWWEJRFIXNTZXEJOGCHNUQSETYDKWNUMKWKDOUIEYKPXASBWJAATTIEQFTNZRBXDQQTSLDVVVNIOCPMJDJOHQTMGQVQCGLHDEATOENQHFJ",
     },
-    // cache: 'no-cache',
     ...config,
   });
 };
 
 export const getDocuments = async () => {
-  const data = await (
-    await customFetch("search?_fields=_all", {
-      headers: {
-        "REST-Range": "resources=0-99",
-      },
-    })
-  ).json();
+  try {
+    const data = await (
+      await customFetch("search?_fields=_all", {
+        headers: {
+          "REST-Range": "resources=0-99",
+        },
+      })
+    ).json();
 
-  return data;
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export const createDocument = async (data: { CookieFortune: string }) => {
-  const response = await (
-    await customFetch("documents", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-  ).json();
-  console.log(response);
+  try {
+    const response = await (
+      await customFetch("documents", {
+        method: "POST",
+        body: JSON.stringify(data),
+      })
+    ).json();
 
-  return response;
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export const deleteDocument = async (id: string) => {
-  const response = await customFetch(`documents/${id}`, { method: "DELETE" });
+  try {
+    const response = await customFetch(`documents/${id}`, { method: "DELETE" });
 
-  return response;
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
