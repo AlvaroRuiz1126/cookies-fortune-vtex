@@ -1,29 +1,29 @@
 {
   "store.custom#challenge": {
-    "blocks": ["flex-layout.row#about-us"]
+    "blocks": ["flex-layout.row#challenge"]
   },
-  "flex-layout.row#about-us": {
-    "children": ["image#about-us", "flex-layout.col#text-about-us"]
+  "flex-layout.row#challenge": {
+    "children": ["image#challenge", "flex-layout.col#text-challenge"]
   },
-  "flex-layout.col#text-about-us": {
-    "children": ["rich-text#about-title", "rich-text#about-content", "cookies"],
+  "flex-layout.col#text-challenge": {
+    "children": ["rich-text#challenge-title", "rich-text#challenge-content", "cookies"],
     "props": {
       "preventVerticalStretch": true
     }
   },
-  "rich-text#about-title": {
+  "rich-text#challenge-title": {
     "props": {
-      "text": "# About us Title"
+      "text": "# Cookie Fortune"
     }
   },
-  "rich-text#about-content": {
+  "rich-text#challenge-content": {
     "props": {
-      "text": " About us content - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      "text": "Need a little bit bit of sage advice or a quick pick-me-up? Get the wisdom of your fortune cookie without the calories!"
     }
   },
-  "image#about-us": {
+  "image#challenge": {
     "props": {
-      "src": "https://storecomponents.vteximg.com.br/arquivos/mobile-phone.png",
+      "src": "https://www.ocado.com/cmscontent/recipe_image_large/30264276.jpg?Z2oB",
       "maxHeight": "600px"
     }
   }

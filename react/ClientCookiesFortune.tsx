@@ -30,27 +30,33 @@ function ClientCookieForutne() {
 
   return (
     <div className="flex flex-column items-center justify-between">
-      <div>
+      <div className="mb4">
         <Button onClick={handleCookie}>Get Cookie</Button>
       </div>
 
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex items-end justify-between w-100">
+        <div className="flex flex-column items-center w-100">
           {cookie.trim().length > 0 && (
-            <h3 className="mv2">
-              <Tag bgColor="#134CD8" color="#FFFFFF" size="large">
-                {cookie}
-              </Tag>
-            </h3>
+            <>
+              <p className="mv0">Cookie Message</p>
+              <h3 className="mv4">
+                <Tag bgColor="#134CD8" color="#FFFFFF" size="large">
+                  {cookie}
+                </Tag>
+              </h3>
+            </>
           )}
           {luckyNumber && (
-            <h5 className="mv2">
-              <Tag size="large" variation="low">
-                {luckyNumber}
-              </Tag>
-            </h5>
+            <>
+              <p className="mv0">Lucky number</p>
+              <h5 className="mv4">
+                <Tag size="large" variation="low">
+                  {luckyNumber}
+                </Tag>
+              </h5>
+            </>
           )}
         </div>
       )}

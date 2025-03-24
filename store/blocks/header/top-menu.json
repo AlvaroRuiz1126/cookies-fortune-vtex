@@ -2,7 +2,8 @@
   "vtex.menu@2.x:menu#websites": {
     "children": [
       "menu-item#shop",
-      "menu-item#about-us"
+      "menu-item#about-us",
+      "menu-item#challenge"
     ]
   },
   "menu-item#shop": {

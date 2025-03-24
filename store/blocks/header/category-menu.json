@@ -171,6 +171,21 @@
       }
     }
   },
+  "menu-item#challenge": {
+    "props": {
+      "id": "menu-item-challenge",
+      "type": "custom",
+      "iconId": null,
+      "highlight": false,
+      "itemProps": {
+        "type": "internal",
+        "href": "/challenge",
+        "noFollow": true,
+        "tagTitle": "Cookie Fortune",
+        "text": "Cookie Fortune"
+      }
+    }
+  },
   "menu-item#faq": {
     "props": {
       "id": "menu-item-faq",
